@@ -102,10 +102,10 @@
             });
         });
         
-        // Function to update active navigation link (desktop)
-        function updateActiveNavLink() {
+        // Function to update active navigation icon (desktop)
+        function updateActiveNavIcon() {
             const sections = document.querySelectorAll('.section');
-            const navLinks = document.querySelectorAll('.desktop-nav-menu a');
+            const navIcons = document.querySelectorAll('.desktop-nav-menu a');
             
             let currentSectionId = '';
             
@@ -117,16 +117,16 @@
                 }
             });
             
-            // Remove active class from all links
-            navLinks.forEach(link => {
-                link.classList.remove('active');
+            // Remove active class from all icons
+            navIcons.forEach(icon => {
+                icon.classList.remove('active');
             });
             
-            // Add active class to corresponding link
+            // Add active class to corresponding icon
             if (currentSectionId) {
-                const activeLink = document.querySelector(`.desktop-nav-menu a[href="#${currentSectionId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active');
+                const activeIcon = document.querySelector(`.desktop-nav-menu a[href="#${currentSectionId}"]`);
+                if (activeIcon) {
+                    activeIcon.classList.add('active');
                 }
             }
         }
@@ -160,9 +160,9 @@
             }
         }
         
-        // Listen for scroll to update active nav links
+        // Listen for scroll to update active nav icons
         window.addEventListener('scroll', function() {
-            updateActiveNavLink();
+            updateActiveNavIcon();
             updateActiveNavButton();
         });
         
@@ -205,9 +205,8 @@
         window.addEventListener('resize', checkScreenSize);
         checkScreenSize(); // Initial check
         
-        // Initialize active nav links on page load
+        // Initialize active nav icons on page load
         window.addEventListener('load', function() {
-            updateActiveNavLink();
+            updateActiveNavIcon();
             updateActiveNavButton();
         });
-
