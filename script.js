@@ -3,6 +3,9 @@
         const darkModeToggle = document.getElementById('darkModeToggle');
         const mobileDarkModeToggle = document.getElementById('mobileDarkModeToggle');
         const body = document.body;
+
+        // Auto-update copyright year
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
         
         // Check for saved theme preference or default to light mode
         const currentTheme = localStorage.getItem('theme') || 'light';
@@ -56,12 +59,15 @@
             connectBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
                 mobileConnectDropdown.classList.toggle('show');
+                // Toggle active class for color
+                connectBtn.classList.toggle('active');
             });
             
             // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
                 if (!mobileConnectDropdown.contains(e.target)) {
                     mobileConnectDropdown.classList.remove('show');
+                    connectBtn.classList.remove('active');
                 }
             });
         }
@@ -96,6 +102,70 @@
             });
         });
         
+        // Function to update active navigation link (desktop)
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.desktop-nav-menu a');
+            
+            let currentSectionId = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSectionId = section.id;
+                }
+            });
+            
+            // Remove active class from all links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to corresponding link
+            if (currentSectionId) {
+                const activeLink = document.querySelector(`.desktop-nav-menu a[href="#${currentSectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        }
+        
+        // Function to update active mobile nav button
+        function updateActiveNavButton() {
+            const sections = document.querySelectorAll('.section');
+            const mobileNavButtons = document.querySelectorAll('.mobile-nav-btn');
+            
+            let currentSectionId = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSectionId = section.id;
+                }
+            });
+            
+            // Remove active class from all buttons
+            mobileNavButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to corresponding button
+            if (currentSectionId) {
+                const activeButton = document.querySelector(`.mobile-nav-btn[href="#${currentSectionId}"]`);
+                if (activeButton) {
+                    activeButton.classList.add('active');
+                }
+            }
+        }
+        
+        // Listen for scroll to update active nav links
+        window.addEventListener('scroll', function() {
+            updateActiveNavLink();
+            updateActiveNavButton();
+        });
+        
         // Animate elements on scroll
         const observerOptions = {
             threshold: 0.1,
@@ -111,8 +181,8 @@
             });
         }, observerOptions);
         
-        // Observe timeline items
-        document.querySelectorAll('.timeline-item').forEach(item => {
+        // Observe all animated elements
+        document.querySelectorAll('.timeline-item, .skill-box, .experience-card, .achievement-card').forEach(item => {
             observer.observe(item);
         });
         
@@ -134,3 +204,10 @@
         
         window.addEventListener('resize', checkScreenSize);
         checkScreenSize(); // Initial check
+        
+        // Initialize active nav links on page load
+        window.addEventListener('load', function() {
+            updateActiveNavLink();
+            updateActiveNavButton();
+        });
+
