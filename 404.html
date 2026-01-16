@@ -72,43 +72,28 @@
         }
         
         .missing-url-container {
-            background-color: #f1f5f9;
-            border: 2px dashed #cbd5e1;
+            background-color: #fee2e2; /* হালকা লাল ব্যাকগ্রাউন্ড */
+            border: 2px solid #fca5a5; /* হালকা লাল বর্ডার */
             border-radius: 12px;
-            padding: 20px;
+            padding: 18px 20px;
             margin: 0 auto 40px;
             max-width: 700px;
             width: calc(100% - 40px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            /* নোট/বক্স স্টাইল সরানো হয়েছে */
         }
         
         .url-label {
             display: block;
             font-size: 0.9rem;
-            color: #64748b;
-            margin-bottom: 15px;
+            color: #7f1d1d; /* গাঢ় লাল কালার */
+            margin-bottom: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         
-        .url-box {
-            background-color: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .url-box:hover {
-            border-color: #cbd5e1;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        }
-        
         .url-path {
-            color: #ef4444;
+            color: #dc2626; /* লাল কালার */
             font-weight: bold;
             font-family: 'Courier New', monospace;
             font-size: 1.1rem;
@@ -120,7 +105,7 @@
             max-width: 100%;
             text-align: center;
             padding: 5px 0;
-            line-height: 1.5;
+            line-height: 1.4;
         }
         
         .button-group {
@@ -211,7 +196,7 @@
             
             .missing-url-container {
                 width: calc(100% - 30px);
-                padding: 18px;
+                padding: 16px 18px;
                 margin: 0 auto 35px;
             }
         }
@@ -241,18 +226,22 @@
             }
             
             .missing-url-container {
-                padding: 16px;
+                padding: 14px 16px;
                 margin: 0 auto 30px;
                 width: calc(100% - 20px);
+                background-color: #fee2e2;
+                border: 2px solid #fca5a5;
             }
             
-            .url-box {
-                padding: 12px;
+            .url-label {
+                font-size: 0.9rem;
+                color: #7f1d1d;
             }
             
             .url-path {
                 font-size: 1rem;
                 line-height: 1.5;
+                color: #dc2626;
             }
             
             .back-button, .home-button {
@@ -299,26 +288,25 @@
             }
             
             .missing-url-container {
-                padding: 14px 12px;
+                padding: 12px 14px;
                 margin: 0 auto 25px;
                 width: 100%;
                 border-radius: 10px;
+                background-color: #fee2e2;
+                border: 2px solid #fca5a5;
             }
             
             .url-label {
                 font-size: 0.8rem;
-                margin-bottom: 12px;
-            }
-            
-            .url-box {
-                padding: 10px;
-                border-radius: 6px;
+                margin-bottom: 8px;
+                color: #7f1d1d;
             }
             
             .url-path {
                 font-size: 0.95rem;
                 padding: 4px 0;
                 line-height: 1.5;
+                color: #dc2626;
             }
             
             .button-group {
@@ -354,15 +342,14 @@
             }
             
             .missing-url-container {
-                padding: 12px 10px;
-            }
-            
-            .url-box {
-                padding: 8px;
+                padding: 10px 12px;
+                background-color: #fee2e2;
+                border: 2px solid #fca5a5;
             }
             
             .url-path {
                 font-size: 0.9rem;
+                color: #dc2626;
             }
         }
         
@@ -386,10 +373,8 @@
         
         <!-- Missing URL is now directly after the Page Not Found title -->
         <div class="missing-url-container url-after-title">
-            <span class="url-label">Missing URL:</span>
-            <div class="url-box">
-                <div id="missing-url-text" class="url-path"></div>
-            </div>
+            <span class="url-label">Missing URL Path:</span>
+            <div id="missing-url-text" class="url-path"></div>
         </div>
         
         <p class="error-message">
